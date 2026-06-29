@@ -1,0 +1,10 @@
+# dependencies
+server/node_modules/
+
+# secrets & local data
+server/.env
+server/data/
+
+# os / editor
+.DS_Store
+*.log
