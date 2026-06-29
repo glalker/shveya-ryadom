@@ -7,6 +7,13 @@
       "runtimeArgs": ["start"],
       "cwd": "server",
       "port": 3000
+    },
+    {
+      "name": "shveya-static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4173"],
+      "cwd": "public",
+      "port": 4173
     }
   ]
 }
