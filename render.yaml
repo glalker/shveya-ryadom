@@ -1,0 +1,30 @@
+# Render Blueprint для сайта «Ваша швея рядом».
+# Деплоит Node-сервер (server/), который отдаёт сайт из public/ и принимает заявки в MAX.
+#
+# Как развернуть:
+#   1. Залить репозиторий на GitHub (ветка main).
+#   2. На render.com → New → Blueprint → выбрать этот репозиторий.
+#   3. Render прочитает этот файл и создаст web-сервис.
+#   4. В разделе Environment ввести секретные значения (MAX_BOT_TOKEN, MAX_RECIPIENT_ID) —
+#      они помечены sync:false и в репозиторий не попадают.
+services:
+  - type: web
+    name: shveya-ryadom
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # Секреты — вводятся вручную в дашборде Render (в git не хранятся):
+      - key: MAX_BOT_TOKEN
+        sync: false
+      - key: MAX_RECIPIENT_ID
+        sync: false
+      # Несекретные значения:
+      - key: MAX_RECIPIENT_TYPE
+        value: user
+      - key: MAX_API_BASE
+        value: https://botapi.max.ru

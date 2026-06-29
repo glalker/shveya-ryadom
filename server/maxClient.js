@@ -13,12 +13,12 @@
  * только в .env.
  *
  * Актуально на 2026 год (см. https://dev.max.ru/docs-api):
- *  - хост: https://platform-api2.max.ru (старый botapi.max.ru больше не используется);
+ *  - хост: https://botapi.max.ru (проверено: platform-api2.max.ru не резолвится);
  *  - токен передаётся в заголовке Authorization, НЕ в query-параметре;
  *  - получатель — query-параметр user_id (личный диалог) или chat_id (группа).
  */
 
-const API_BASE = process.env.MAX_API_BASE || "https://platform-api2.max.ru";
+const API_BASE = process.env.MAX_API_BASE || "https://botapi.max.ru";
 const TOKEN = process.env.MAX_BOT_TOKEN || "";
 const RECIPIENT_ID = process.env.MAX_RECIPIENT_ID || "";
 // Тип получателя: "user" (личный диалог с мамой) или "chat" (группа/чат).
